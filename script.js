@@ -12,16 +12,44 @@ function writePassword() {
 
 // Generate lower case a-z, 97-122 
 // Use Math.random to generate a random decimal and multiply it by 26 to get 1-26 for 
-// the letters of the alphabet a-z. Add 97 to the randome number to get the ascii value
+// the letters of the alphabet a-z. Add 97 to the random number to get the ascii value
 // for the lower case letter.
 function genLower() {
-  // console.log(String.fromCharCode(Math.floor(Math.random() * 26) +97));
   return String.fromCharCode(Math.floor(Math.random() * 26) +97);
-  
 }
+console.log(genLower());
+console.log("=======================")
 
-console.log(genRandomLower());
-// console.log(Math.random());
+// Generate upper case A-Z, 65-90 
+// Use Math.random to generate a random decimal and multiply it by 26 to get 1-26 for 
+// the letters of the alphabet A-Z. Add 65 to the random number to get the ascii value
+// for the upper case letter.
+function genUpper() {
+  return String.fromCharCode(Math.floor(Math.random() * 26) +65);
+}
+console.log(genUpper());
+console.log("=======================")
+
+// Generate number from 0-1, 48-57 
+// Use Math.random to generate a random decimal and multiply it by 10 to get 0-9 for 
+// the numbers 0-9. Add 48 to the random number to get the ascii value
+// for the number.
+function genNumber() {
+  return String.fromCharCode(Math.floor(Math.random() * 10) +48);
+}
+console.log(genNumber());
+console.log("=======================")
+
+// Generate special characters from 'space'-/, 32-47 
+// Use Math.random to generate a random decimal and multiply it by 16 to get span of 
+// special characters. Add 32 to the random number to get the ascii value
+// for the special character.
+function genSpecialChar() {
+
+  return String.fromCharCode(Math.floor(Math.random() * 16) +32);
+}
+console.log("'"+genSpecialChar()+"'");
+console.log("=======================")
 
 // // Print out all the lower case letters from a-z using ascii characters 97-122
 // console.log("=======================")
