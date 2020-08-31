@@ -40,23 +40,45 @@ function genNumber() {
 console.log(genNumber());
 console.log("=======================")
 
-// Generate special characters from 'space'-/, 32-47 
+// Generate special characters from 'space'-/, 32-47 :-@, 58-64, [-`, 91-96, {-~, 123-126
 // Use Math.random to generate a random decimal and multiply it by 16 to get span of 
 // special characters. Add 32 to the random number to get the ascii value
 // for the special character.
-function genSpecialChar() {
+function genSpecialChar() {  
+  // return String.fromCharCode(Math.floor(Math.random() * 16) +32);
+  // return String.fromCharCode(Math.floor(Math.random() * 7) +58);
+  // return String.fromCharCode(Math.floor(Math.random() * 6) +91);
+  // return String.fromCharCode(Math.floor(Math.random() * 4) +123);
 
-  return String.fromCharCode(Math.floor(Math.random() * 16) +32);
+  var specCharArray = [" ", "!", "#", "$", "%", "&", "'", "(", ")", "*", "+", ",", "-", ".", "/", 
+                        ":", ";", "<", "=", ">", "?", "@", "[", "\\", "]", "^", "_", "`", "{", "|", "}", "~" ];
+  const randomSpecCharArray = specCharArray[Math.floor(Math.random() * specCharArray.length)]
+  
+  return randomSpecCharArray;
 }
+
 console.log("'"+genSpecialChar()+"'");
 console.log("=======================")
 
-// // Print out all the lower case letters from a-z using ascii characters 97-122
-// console.log("=======================")
-// for (var i=97; i< 122; i++){
+
+
+// Print out all characters using ascii characters
+console.log("=======================")
+// for (var i=32; i< 48; i++){
 //   console.log(String.fromCharCode(i));
 // }
-// console.log("=======================")
+// for (var i=58; i< 65; i++){
+//   console.log(String.fromCharCode(i));
+// }
+// for (var i=91; i< 97; i++){
+//   console.log(String.fromCharCode(i));
+// }
+for (var i=123; i< 127; i++){
+  console.log(String.fromCharCode(i));
+}
+console.log("=======================")
 
 // Add event listener to generate button
 generateBtn.addEventListener("click", writePassword);
+
+
