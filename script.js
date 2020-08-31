@@ -14,9 +14,10 @@ function writePassword() {
 // Use Math.random to generate a random decimal and multiply it by 26 to get 1-26 for 
 // the letters of the alphabet a-z. Add 97 to the randome number to get the ascii value
 // for the lower case letter.
-function genRandomLower() {
+function genLower() {
   // console.log(String.fromCharCode(Math.floor(Math.random() * 26) +97));
   return String.fromCharCode(Math.floor(Math.random() * 26) +97);
+  
 }
 
 console.log(genRandomLower());
