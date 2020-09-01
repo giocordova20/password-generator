@@ -10,6 +10,8 @@ function writePassword() {
 
 }
 
+
+
 // Generate lower case a-z, 97-122 
 // Use Math.random to generate a random decimal and multiply it by 26 to get 1-26 for 
 // the letters of the alphabet a-z. Add 97 to the random number to get the ascii value
@@ -40,30 +42,23 @@ function genNumber() {
 console.log(genNumber());
 console.log("=======================")
 
-// Generate special characters from 'space'-/, 32-47 :-@, 58-64, [-`, 91-96, {-~, 123-126
-// Use Math.random to generate a random decimal and multiply it by 16 to get span of 
-// special characters. Add 32 to the random number to get the ascii value
-// for the special character.
+// Generate special characters from the list between the double quotes " !"#$%&'()*+,-./:;<=>?@[\]^_`{|}~"
+// Used an array because the special characters have nonsequential ascii values and it's easier to have them
+// in an array
 function genSpecialChar() {  
-  // return String.fromCharCode(Math.floor(Math.random() * 16) +32);
-  // return String.fromCharCode(Math.floor(Math.random() * 7) +58);
-  // return String.fromCharCode(Math.floor(Math.random() * 6) +91);
-  // return String.fromCharCode(Math.floor(Math.random() * 4) +123);
-
   var specCharArray = [" ", "!", "#", "$", "%", "&", "'", "(", ")", "*", "+", ",", "-", ".", "/", 
-                        ":", ";", "<", "=", ">", "?", "@", "[", "\\", "]", "^", "_", "`", "{", "|", "}", "~" ];
+                       ":", ";", "<", "=", ">", "?", "@", "[", "\\", "]", "^", "_", "`", "{", "|", "}", "~" ];
   const randomSpecCharArray = specCharArray[Math.floor(Math.random() * specCharArray.length)]
   
   return randomSpecCharArray;
 }
-
 console.log("'"+genSpecialChar()+"'");
-console.log("=======================")
+console.log("=======================");
 
 
 
 // Print out all characters using ascii characters
-console.log("=======================")
+console.log("=======================");
 // for (var i=32; i< 48; i++){
 //   console.log(String.fromCharCode(i));
 // }
@@ -73,10 +68,14 @@ console.log("=======================")
 // for (var i=91; i< 97; i++){
 //   console.log(String.fromCharCode(i));
 // }
-for (var i=123; i< 127; i++){
-  console.log(String.fromCharCode(i));
-}
+// for (var i=123; i< 127; i++){
+//   console.log(String.fromCharCode(i));
+// }
+var specCharArray = [" ", "!", "#", "$", "%", "&", "'", "(", ")", "*", "+", ",", "-", ".", "/", 
+":", ";", "<", "=", ">", "?", "@", "[", "\\", "]", "^", "_", "`", "{", "|", "}", "~" ]
+console.log(specCharArray);
 console.log("=======================")
+
 
 // Add event listener to generate button
 generateBtn.addEventListener("click", writePassword);
