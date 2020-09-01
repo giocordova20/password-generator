@@ -14,29 +14,31 @@ function writePassword() {
 
 // This function executed when the Generate Password button is clicked
 function generatePassword() {
-  var pwlength = prompt(
-    "Enter a numeric value for password length between 8 and 128 to determine the password length."
-  );
-  var numberCheck = isNaN(parseInt(pwlength)); // Check if the input is a number by 1. using parseInt to convert the input
-  // to a number value 2. using isNaN to verify whether the result of 1. is a number
+  var pwLength = prompt("Enter a numeric value for password length between 8 and 128 to determine the password length.");
+  var numberCheck = isNaN(parseInt(pwLength)); // Check if the input is a number by 1. using parseInt to convert the input
+                                               // to a number value 2. using isNaN to verify whether the result of 1. is a number
+
+  //console.log("pwLength: "+ pwLength)
+
+  var pwOptionsArray = [lowerconfirm, upperconfirm, numconfirm, specialconfirm];  
 
   // Verify the pw length entered is <=8 and >=128, and return the value. First check that the length is at least 8.
   // Second check if it is greater than 128. Third verify that the character entered is numeric.
-  if (pwlength < 8) {
-    alert(
-      "The password length you selected is less than 8 characters in length."
-    );
-  } else if (pwlength > 128) {
-    alert(
-      "The password length you selected is greater than 128 characters in length."
-    );
+  if (pwLength == null) {
+    return;
+  } else if (pwLength < 8) {
+    alert("The password length you selected is less than 8 characters in length.")
+      return;
+  } else if (pwLength > 128) {
+    alert("The password length you selected is greater than 128 characters in length.")
+      return;
   } else if (numberCheck) {
-    alert(
-      "The the value entered for password length is not a numeric value. Please select a numeric value between 8 and 128."
-    );
-  } else if (pwlength >= 8 || pwlength <= 128) {
-    pwlength = parseInt(pwlength);
+    alert("The the value entered for password length is not a numeric value. Please select a numeric value between 8 and 128.");
+      return
+  } else if (pwLength >= 8 || pwLength <= 128) {
+    pwLength = parseInt(pwLength);
   }
+  console.log("pwlenth: " + pwLength + " type: " + typeof (pwLength));
 
   // Confirm if the user wants to use lower case 
   var lowerconfirm = confirm("Would you like to include lower case characters?");
@@ -45,6 +47,7 @@ function generatePassword() {
   } else {
     lowerconfirm = false;
   }
+  
   console.log("lowerconfirm: " + lowerconfirm);
 
   // Confirm if the user wants to use upper case
@@ -55,7 +58,6 @@ function generatePassword() {
     upperconfirm = false;
   }
   console.log("upperconfirm: " + upperconfirm);
-
 
   // Confirm if the user wants to use numeric characters
   var numconfirm = confirm("Would you like to include numeric characters?");
@@ -75,6 +77,8 @@ function generatePassword() {
   }
   console.log("specialconfirm: " + specialconfirm);
 }
+
+
 
 // Generate lower case a-z, 97-122
 // Use Math.random to generate a random decimal and multiply it by 26 to get 1-26 for
