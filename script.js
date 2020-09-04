@@ -15,21 +15,26 @@ function writePassword() {
   passwordText.value = password
 }
 
+var lower = "abcdefghijklmnopqrstuvwxyz";         // String of lower case
+var upper = lower.toUpperCase();                  // String of upper case
+var num = "0123456789";                           // String of numbers
+var spec = " !\"#$%&'()*+,-./:;<=>?@[\\]^_`{|}~"; // String of special characters
+
 // This function executed when the Generate Password button is clicked
 function generatePassword() {
   var pwLength = prompt("Enter a numeric value for password length between 8 and 128 to determine the password length.");
-  // Check if the input is a number by using parseInt to convert the input 
+  // Check if the input is a number by 1. using parseInt to convert the input 
   // to a number value then using isNaN to verify whether the result of 1. is a number
   var numberCheck = isNaN(parseInt(pwLength)); 
   console.log("pwLength: "+ pwLength)
-
 
   var lengthTooShort = "The password length you selected is less than 8 characters in length.";
   var lengthTooLong = "The password length you selected is greater than 128 characters in length.";
   var lengthNotNum = "The the value entered for password length is not a numeric value. Please select a numeric value between 8 and 128.";
   
-  var pwCharacterOptions = "";
-  var password = "";
+  var pwCharacterOptions = ""; // Characters available for the pw based on user selection
+  var password = "";           // The final generated pw based on the selection
+
   // Verify the pw length entered is <=8 and >=128, and return the value. First check that the length is at least 8.
   // Second check if it is greater than 128. Third verify that the character entered is numeric.
   if (pwLength == null) {
@@ -54,7 +59,8 @@ function generatePassword() {
   var askSpec = "Would you like to include special characters?";
   var makeSelection = "Please select at at least one: lowercase, uppercase, number, special character.";
 
-  // Confirm if the user wants to use lower case and append the lower case string to the 
+  // Confirm if the user wants to use lower case and append the lower case string, a-z, to the available 
+  // pw character options
   var lowerconfirm = confirm(askLower);
   if (lowerconfirm) {
     pwCharacterOptions = pwCharacterOptions.concat(lower);
@@ -65,7 +71,8 @@ function generatePassword() {
   }
   console.log("lowerconfirm: " + lowerconfirm);
 
-  // Confirm if the user wants to use upper case
+  // Confirm if the user wants to use upper case and append upper case string, A-Z, to the available
+  // pw character options
   var upperconfirm = confirm(askUpper);
   if (upperconfirm) {
     pwCharacterOptions = pwCharacterOptions.concat(upper);
@@ -76,7 +83,8 @@ function generatePassword() {
   }
   console.log("upperconfirm: " + upperconfirm);
 
-  // Confirm if the user wants to use numeric characters
+  // Confirm if the user wants to use numeric characters and append numeric string, 0-9, to the available
+  // pw character options
   var numconfirm = confirm(askNum);
   if (numconfirm) {
     pwCharacterOptions = pwCharacterOptions.concat(num);
@@ -87,7 +95,8 @@ function generatePassword() {
   }
   console.log("numconfirm: " + numconfirm);
 
-  // Confirm if the user wants to use special characters
+  // Confirm if the user wants to use special characters and append special character string to the available
+  // pw character options
   var specialconfirm = confirm(askSpec);
   if (specialconfirm) {
     pwCharacterOptions = pwCharacterOptions.concat(spec);
@@ -100,7 +109,6 @@ function generatePassword() {
 
   // Make sure the user selects at least one option
   if (lowerconfirm == false && upperconfirm == false && numconfirm == false && specialconfirm == false){
-    console.log("inside of the check")
     alert(makeSelection)
   }
 
@@ -114,72 +122,48 @@ function generatePassword() {
     password = password.concat(pwCharacterOptionsArray[Math.floor(Math.random()*pwCharacterOptionsArray.length)]);
   }
   return password;
-
-  var noPWset = "No pw set!!!"
-  return noPWset
-
 }
-
-
-// var lower = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm','n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z'];
-var lower = "abcdefghijklmnopqrstuvwxyz";
-// console.log("split of lower2 " + lower2.split(''));
-// var upper = lower.map(function(x){return x.toUpperCase();}); // Convert lower array to upper case
-var upper = lower.toUpperCase();
-// console.log("upper: " + upper);
-// console.log("upper2 " + upper2);
-
-var num = "0123456789";
-// console.log(num);
-// console.log(num.split(''));
-
-var spec = " !\"#$%&'()*+,-./:;<=>?@[\\]^_`{|}~";
-// console.log(spec);
-// console.log(spec.split(''));
 
 // Generate lower case a-z, 97-122
 // Use Math.random to generate a random decimal and multiply it by 26 to get 1-26 for
 // the letters of the alphabet a-z. Add 97 to the random number to get the ascii value
 // for the lower case letter.
-// function genLower() {
-//   return String.fromCharCode(Math.floor(Math.random() * 26) + 97)
-// }
-// console.log(genLower());
-// console.log("=======================")
+function genLower() {
+  return String.fromCharCode(Math.floor(Math.random() * 26) + 97)
+}
+console.log("genLower: " + genLower());
+console.log("=======================")
 
 // Generate upper case A-Z, 65-90
 // Use Math.random to generate a random decimal and multiply it by 26 to get 1-26 for
 // the letters of the alphabet A-Z. Add 65 to the random number to get the ascii value
 // for the upper case letter.
-// function genUpper() {
-//   return String.fromCharCode(Math.floor(Math.random() * 26) + 65)
-// }
-// console.log(genUpper());
-// console.log("=======================")
+function genUpper() {
+  return String.fromCharCode(Math.floor(Math.random() * 26) + 65)
+}
+console.log("genUpper: " + genUpper());
+console.log("=======================")
 
 // Generate number from 0-1, 48-57
 // Use Math.random to generate a random decimal and multiply it by 10 to get 0-9 for
 // the numbers 0-9. Add 48 to the random number to get the ascii value
 // for the number.
-// function genNumber() {
-//   return String.fromCharCode(Math.floor(Math.random() * 10) + 48)
-// }
-// console.log(genNumber());
-// console.log("=======================")
+function genNumber() {
+  return String.fromCharCode(Math.floor(Math.random() * 10) + 48)
+}
+console.log("genNumber: " + genNumber());
+console.log("=======================")
 
 // Generate special characters from the list between the double quotes " !"#$%&'()*+,-./:;<=>?@[\]^_`{|}~"
 // Used an array because the special characters have nonsequential ascii values and it's easier to have them
 // in an array
-// function genSpecialChar() {
-//   var specCharArray = [' ', '!', '#', '$', '%', '&', "'", '(', ')', '*', '+', ',', '-', '.', '/', ':', ';',
-//                         '<', '=', '>', '?', '@', '[', '\\', ']', '^', '_', '`', '{', '|', '}', '~']
-//   const randomSpecCharArray =
-//     specCharArray[Math.floor(Math.random() * specCharArray.length)]
-
-//   return randomSpecCharArray
-// }
-// console.log("'" + genSpecialChar() + "'")
-// console.log('=======================')
+function genSpecialChar() {
+  var spec = " !\"#$%&'()*+,-./:;<=>?@[\\]^_`{|}~";
+  const randomSpec = spec[Math.floor(Math.random() * spec.length)]
+  return randomSpec
+}
+console.log("genSpecialChar: '" + genSpecialChar() + "'")
+console.log('=======================')
 
 // Print out all characters using ascii characters
 // console.log("=======================");
