@@ -5,6 +5,13 @@ var generatedPW = document.querySelector('#password')
 var lowerconfirm, upperconfirm, numconfirm, specialconfirm
 var selectedTypes= [lowerconfirm, upperconfirm, numconfirm, specialconfirm]
 
+var lower = "abcdefghijklmnopqrstuvwxyz";         // String of lower case
+var upper = lower.toUpperCase();                  // String of upper case
+var num = "0123456789";                           // String of numbers
+var spec = " !\"#$%&'()*+,-./:;<=>?@[\\]^_`{|}~"; // String of special characters
+var types = [lower, upper, num, spec] ;           // Array for the available types
+
+
 // Add event listener to generate button
 generateBtn.addEventListener('click', writePassword)
 copyBtn.addEventListener('click', copyPassword)
@@ -17,15 +24,11 @@ function writePassword() {
   passwordText.value = password
 }
 
-
 // Copy pw to clipboard. 
 // Referenced https://hackernoon.com/copying-text-to-clipboard-with-javascript-df4d4988697f
 function copyPassword(){
   var textArea = document.createElement('textarea');
   var copiedPW = document.querySelector('#password').value;
-
-  // console.log("textArea in copy: ", textArea);
-  // console.log("copiedPW in copy: ", copiedPW);
 
   textArea.value=copiedPW;
   document.body.appendChild(textArea);
@@ -34,20 +37,12 @@ function copyPassword(){
   textArea.remove();
 }
 
-var lower = "abcdefghijklmnopqrstuvwxyz";         // String of lower case
-var upper = lower.toUpperCase();                  // String of upper case
-var num = "0123456789";                           // String of numbers
-var spec = " !\"#$%&'()*+,-./:;<=>?@[\\]^_`{|}~"; // String of special characters
-var types = [lower, upper, num, spec] ;    // Array for the available types
-
-
 // This function executed when the Generate Password button is clicked
 function generatePassword() {
   var pwLength = prompt("Enter a numeric value for password length between 8 and 128 to determine the password length.");
   // Check if the input is a number by 1. using parseInt to convert the input 
   // to a number value then using isNaN to verify whether the result of 1. is a number
   var numberCheck = isNaN(parseInt(pwLength)); 
-  //console.log("pwLength: "+ pwLength)
 
   // Declare the alert messages for entering an incorrect pw length
   var lengthTooShort = "The password length you selected is less than 8 characters in length.";
@@ -73,7 +68,6 @@ function generatePassword() {
   } else if (pwLength >= 8 || pwLength <= 128) {
     pwLength = parseInt(pwLength);
   }
-  //console.log("pwlenth: " + pwLength + ";;; type: " + typeof (pwLength));
 
   // Delcare the questions used to confirm the types to be use in the pw 
   var askLower = "Would you like to include lower case characters?";
@@ -87,59 +81,48 @@ function generatePassword() {
   var lowerconfirm = confirm(askLower);
   if (lowerconfirm) {
     pwCharacterOptions = pwCharacterOptions.concat(lower);
-    //console.log(pwCharacterOptions);
     lowerconfirm = true;
     selectedTypes[0] = lowerconfirm;
   } else {
     lowerconfirm = false;
     selectedTypes[0] = lowerconfirm;
-
   }
-  //console.log("lowerconfirm: " + lowerconfirm);
 
   // Confirm if the user wants to use upper case and append upper case string, A-Z, to the available
   // pw character options
   var upperconfirm = confirm(askUpper);
   if (upperconfirm) {
     pwCharacterOptions = pwCharacterOptions.concat(upper);
-    //console.log(pwCharacterOptions);
     upperconfirm = true;
     selectedTypes[1] = upperconfirm;
   } else {
     upperconfirm = false;
     selectedTypes[1] = upperconfirm;
-
   }
-  //console.log("upperconfirm: " + upperconfirm);
 
   // Confirm if the user wants to use numeric characters and append numeric string, 0-9, to the available
   // pw character options
   var numconfirm = confirm(askNum);
   if (numconfirm) {
     pwCharacterOptions = pwCharacterOptions.concat(num);
-    //console.log(pwCharacterOptions);
     numconfirm = true;
     selectedTypes[2] = numconfirm;
   } else {
     numconfirm = false;
     selectedTypes[2] = numconfirm;
   }
-  //console.log("numconfirm: " + numconfirm);
 
   // Confirm if the user wants to use special characters and append special character string to the available
   // pw character options
   var specialconfirm = confirm(askSpec);
   if (specialconfirm) {
     pwCharacterOptions = pwCharacterOptions.concat(spec);
-    //console.log(pwCharacterOptions);
     specialconfirm = true;
     selectedTypes[3] = specialconfirm;
   } else {
     specialconfirm = false;
     selectedTypes[3] = specialconfirm;
-
   }
-  //console.log("specialconfirm: " + specialconfirm);
 
   // Make sure the user selects at least one option
   if (lowerconfirm == false && upperconfirm == false && numconfirm == false && specialconfirm == false){
@@ -147,9 +130,6 @@ function generatePassword() {
   }
 
   pwCharacterOptionsArray = pwCharacterOptions.split('')
-  //console.log("pwCharacterOptionsArray::  "+ pwCharacterOptions)
-  // password = pwCharacterOptionsArray[Math.floor(Math.random()*pwCharacterOptionsArray.length)];
-  // console.log("password: " + password);
 
   // Generate the pw based on the length and options input
   for (var i = 0; i < pwLength; i++){
