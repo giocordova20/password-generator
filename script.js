@@ -24,8 +24,8 @@ function copyPassword(){
   var textArea = document.createElement('textarea');
   var copiedPW = document.querySelector('#password').value;
 
-  console.log("textArea in copy: ", textArea);
-  console.log("copiedPW in copy: ", copiedPW);
+  // console.log("textArea in copy: ", textArea);
+  // console.log("copiedPW in copy: ", copiedPW);
 
   textArea.value=copiedPW;
   document.body.appendChild(textArea);
