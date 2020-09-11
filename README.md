@@ -12,3 +12,6 @@ The generator concats all the selections into one string, and then randomly sele
 I tried to make sure all selected types appeared in the password, but was not able to finish the logic. The code for that is in a separte .js file, CharacterCheck.js. I will work on that at a later time.
 
 The 'Copy Password' button copies the generated password to the clipboard to make it ready for paste into another application.
+
+
+![password generator demo](/Password_Generator.gif)
